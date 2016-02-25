@@ -47,9 +47,22 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'autotest'
+  gem 'capybara'
+  gem 'autotest-rails'
+  gem 'database_cleaner'
+  gem 'launchy'
+end
+
+group :test do
+  gem 'cucumber-rails' 
+  gem 'cucumber-rails-training-wheels'
 end
 
 group :production do
   gem 'pg' # for Heroku deployment
   gem 'rails_12factor'
+end
+
+group :coverage do
+  gem 'simplecov', :require => false
 end
