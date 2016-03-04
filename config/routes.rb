@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "index#index"
+  root to: "index#home"
 
   match "/about",     to: "index#about",    via: "get"
   match "/contact",   to: "index#contact",  via: "get"
