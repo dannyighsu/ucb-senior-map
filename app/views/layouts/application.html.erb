@@ -3,7 +3,6 @@
 <head>
   <title><%= yield :head %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'custom', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
@@ -16,8 +15,10 @@
       <%= content_tag :div, msg, class: name %>
     <% end %>
   </div>
-
-  <%= yield %>
+  <%= render 'layouts/header' %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
