@@ -23,3 +23,4 @@ Scenario: there should exist a Help page
   Given I am on the home page
   And I follow "Help"
   Then I should be on the Help page
+  And I should see "FAQ"
