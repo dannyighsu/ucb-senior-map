@@ -1,16 +1,8 @@
-class UsersController < ApplicationController
+class UsersController < Devise::RegistrationsController
 
   def new
     @user = User.new
-  end
-
-  def create
-  end
-
-  def show
-  end
-
-  def destroy
+    logger.info("yay")
   end
 
 end
