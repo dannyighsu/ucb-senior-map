@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.2.2'
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 gem 'bootstrap-sass'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
@@ -58,6 +60,7 @@ group :development, :test do
   gem 'autotest-rails'
   gem 'database_cleaner'
   gem 'launchy'
+  
 end
 
 group :test do

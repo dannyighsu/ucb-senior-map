@@ -9,7 +9,7 @@ Scenario: Users without a profile should be prompted to create a profile
     And I am on the home page
     Then I should see "Create Profile"
     When I click on "Create Profile"
-    Then I should be on the Create Profile page
+    Then I should be on the profile creation page
     And I should see "Facebook"
     And I should see "LinkedIn"
     And I should see "Company"
