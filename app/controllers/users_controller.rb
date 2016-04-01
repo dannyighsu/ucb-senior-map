@@ -6,8 +6,8 @@ class UsersController < Devise::RegistrationsController
 
   def create
     logger.info(params[:user][:email])
-    if /.+@.+\..+/.match(params[:user][:email]) == nil
-      flash[:notice] = "Please enter a valid email address."
+    if /.+@berkeley.edu/.match(params[:user][:email]) == nil
+      flash[:notice] = "Please enter a berkeley.edu email address."
       redirect_to new_user_registration_path
       return
     elsif params[:user][:location] == ""

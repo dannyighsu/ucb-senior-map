@@ -15,7 +15,7 @@ Scenario: creating a user should require email
   Given I am on the new_user_registration page
   And   I press "Create My Account"
   Then  I should be on the new_user_registration page
-  And   I should see "Please enter a valid email address."
+  And   I should see "Please enter a berkeley.edu email address."
 
 Scenario: creating a user should require valid email
 
@@ -23,12 +23,12 @@ Scenario: creating a user should require valid email
   And   I fill in "Email" with "asdf@fj"
   And   I press "Create My Account"
   Then  I should be on the new_user_registration page
-  And   I should see "Please enter a valid email address."
+  And   I should see "Please enter a berkeley.edu email address."
 
 Scenario: creating a user should require a valid LinkedIn or location
 
   Given I am on the new_user_registration page
-  And   I fill in "Email" with "test@gmail.com"
+  And   I fill in "Email" with "test@berkeley.edu"
   And   I press "Create My Account"
   Then  I should be on the new_user_registration page
   And   I should see "Please provide either your LinkedIn account or a valid location."
@@ -36,7 +36,7 @@ Scenario: creating a user should require a valid LinkedIn or location
 Scenario: creating a user without LinkedIn should require a password of at least 6 characters
 
   Given I am on the new_user_registration page
-  And   I fill in "Email" with "test@gmail.com"
+  And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "hiyou"
   And   I fill in "Location" with "Berkeley, CA"
   And   I press "Create My Account"
@@ -46,7 +46,7 @@ Scenario: creating a user without LinkedIn should require a password of at least
 Scenario: creating a user without LinkedIn should require matching passwords
 
   Given I am on the new_user_registration page
-  And   I fill in "Email" with "test@gmail.com"
+  And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "idontknow"
   And   I fill in "Location" with "Berkeley, CA"
@@ -57,7 +57,7 @@ Scenario: creating a user without LinkedIn should require matching passwords
 Scenario: creating a user without LinkedIn should require a valid location
 
   Given I am on the new_user_registration page
-  And   I fill in "Email" with "test@gmail.com"
+  And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "heywhoareyou"
   And   I fill in "Location" with "somewhere over the rainbow"
@@ -68,7 +68,7 @@ Scenario: creating a user without LinkedIn should require a valid location
 Scenario: correct login should go to Map
 
   Given I am on the new_user_registration page
-  And   I fill in "Email" with "test@gmail.com"
+  And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "heywhoareyou"
   And   I fill in "Location" with "San Francisco, CA"
