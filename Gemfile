@@ -7,6 +7,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'bootstrap-sass'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
+gem 'pg'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -68,8 +69,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
 end
 
-group :production do
-  gem 'pg' # for Heroku deployment
+group :production do # for Heroku deployment
   gem 'rails_12factor'
 end
 
