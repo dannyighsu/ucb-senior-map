@@ -1,6 +1,9 @@
 class IndexController < ApplicationController
 
   def home
+    if sessions[:user] != nil
+      redirect_to map_path
+    end
   end
 
   def about
