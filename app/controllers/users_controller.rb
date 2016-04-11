@@ -28,16 +28,22 @@ class UsersController < Devise::RegistrationsController
       return
     end
 
-    registration = User.new
-    registration.first_name = user[:first_name]
-    registration.last_name = user[:last_name]
-    registration.email = user[:email]
-    registration.password = user[:password]
-    registration.location = user[:location]
+    @user = User.new
+    @user.first_name = user[:first_name]
+    @user.last_name = user[:last_name]
+    @user.email = user[:email]
+    @user.password = user[:password]
+    @user.location = user[:location]
     logger.info(user)
-    registration.save
-    sessions[:current_user] = registration
-    redirect_to map_path
+    if @user.save
+      session[:user_id] = @user.id
+      #UserMailer.registration_confirmation(@user).deliver
+      #flash[:success] = "An email has been sent to the berkeley.edu address you provided. Please click the link to confirm your email."
+      redirect_to '/map'
+    else
+      flash[:error] = "There was an error in your registration attempt. Please try again."
+      redirect_to new_user_registration_path
+    end
   end
 
 end

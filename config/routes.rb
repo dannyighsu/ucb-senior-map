@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:registrations => "users"}
-  resources :map
-  resources :users do
-    member do
-      get :confirm_email
-    end
-  end
 
   root to: "index#home"
 
   match "/about",     to: "index#about",    via: "get"
   match "/contact",   to: "index#contact",  via: "get"
   match "/help",      to: "index#help",     via: "get"
+  match "/map",       to: "map#map",        via: "get"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

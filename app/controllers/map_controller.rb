@@ -1,6 +1,6 @@
 class MapController < ApplicationController
 
-  def show
+  def map
   end
 
 end

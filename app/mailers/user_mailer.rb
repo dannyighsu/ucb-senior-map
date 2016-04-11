@@ -3,5 +3,6 @@ class UserMailer < ActionMailer::Base
 
   def registration_confirmation(user)
     @user = user
-    mail(to: "#{user.firstname} <#{user.email}>", subject: "UC Berkeley Senior Map Registration Confirmation")
+    mail(to: "#{user.first_name} <#{user.email}>", subject: "UC Berkeley Senior Map Registration Confirmation")
   end
+end

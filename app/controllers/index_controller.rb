@@ -1,8 +1,9 @@
 class IndexController < ApplicationController
 
   def home
-    if sessions[:user] != nil
-      redirect_to map_path
+    logger.info(session[:user_id])
+    if current_user
+      redirect_to '/map'
     end
   end
 

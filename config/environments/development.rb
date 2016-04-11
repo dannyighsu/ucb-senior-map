@@ -6,9 +6,11 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.action_mailer.default_url_options = { :host => "http://ucb-senior-map.herokuapp.com" }
+
   # Do not eager load code on boot.
   config.eager_load = false
-  
+
   config.web_console.development_only = true
 
   # Show full error reports and disable caching.
