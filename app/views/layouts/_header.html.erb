@@ -1,21 +1,27 @@
+<style>
+  header{
+    background: rgba(100, 100, 100, 0.5);
+  }
+</style>
+
 <header id="header">
   <nav>
     <div id="header-background">
-      <div class="container">
-        <%= link_to image_tag("logo.png", alt: "", height: "100", width: "100"), root_path, id: "logoimage" %>
-          
-        <%= link_to 'About', about_path %>
-        |
-        <%= link_to 'Help', help_path %>
-        |
-        <%= link_to 'Contact', contact_path %>
-        |
-        <% if current_user %>
-          <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
-        <% else %>
-          <%= link_to "Sign Up", new_user_session_path %>
-        <% end %>
-      </div>
+        <div class="container">
+          <%= link_to image_tag("logo.png", alt: "", height: "100", width: "100"), root_path, id: "logoimage" %>
+            
+          <%= link_to 'About', about_path %>
+          |
+          <%= link_to 'Help', help_path %>
+          |
+          <%= link_to 'Contact', contact_path %>
+          |
+          <% if current_user %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
+          <% else %>
+            <%= link_to "Sign Up", new_user_session_path %>
+          <% end %>
+        </div>
     </div>
   </nav>
 </header>
