@@ -16,9 +16,9 @@ module NavigationHelpers
     when /^the home\s?page$/
       '/'
     when /^the map page$/
-      '/map/new'
+      '/map'
     when /^the profile creation page$/
-      '/profile/create'
+      '/users/sign_up'
     when /^the contact page$/
       '/contact'
     when /^the about page$/
