@@ -15,7 +15,9 @@
       <%= content_tag :div, msg, class: name %>
     <% end %>
   </div>
-  <%= render 'layouts/header' %>
+  <div class="header navbar-fixed-top" id='head'>
+    <%= render 'layouts/header' %>
+  </div>
   <div class="container">
     <%= yield %>
   </div>
