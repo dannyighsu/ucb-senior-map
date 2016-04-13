@@ -19,6 +19,12 @@ module NavigationHelpers
       '/map/new'
     when /^the profile creation page$/
       '/profile/create'
+    when /^the contact page$/
+      '/contact'
+    when /^the about page$/
+      '/about'
+    when /^the help page$/
+      '/help'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
