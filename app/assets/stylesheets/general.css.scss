@@ -1,10 +1,12 @@
 @import "bootstrap";
 
 html {
-  background: asset-url("background.png") no-repeat center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
+  body{
+    background:transparent asset-url("background.png") no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+  }
 }
