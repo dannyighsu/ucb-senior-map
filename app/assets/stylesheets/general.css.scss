@@ -10,3 +10,15 @@ html {
     height: 100%;
   }
 }
+
+header {
+  background: rgba(100, 100, 100, 0.5);
+  
+  a:link, a:visited {
+    color: white;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+  }
+}

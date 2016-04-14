@@ -3,17 +3,11 @@
   <nav>
     <ul id='pages'>
 
-      <li><%= link_to "about us", about_path %></li>
-		  <li><%= link_to "help", help_path %></li>
-      <li><%= link_to 'contact', contact_path %></li>
-    </ul>
-    <ul id='signout'>
-      <% if current_user %>
-        <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
-      <% end %>
-
+      <%= link_to "About us", about_path %>
+      |
+		  <%= link_to "Help", help_path %>
+		  |
+      <%= link_to 'Contact', contact_path %>
     </ul>
   </nav>
 </footer>
