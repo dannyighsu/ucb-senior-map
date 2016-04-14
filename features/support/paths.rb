@@ -15,6 +15,8 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+    when /^the registration page$/
+      '/users/sign_up'
     when /^the map page$/
       '/map'
     when /^the profile creation page$/

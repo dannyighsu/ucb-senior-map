@@ -102,4 +102,4 @@ Scenario: correct login should go to Map
   And   I fill in "Password confirmation" with "heywhoareyou"
   And   I fill in "Location" with "San Francisco, CA"
   And   I press "Create My Account"
-  Then  I should be on the new_map page
+  Then  I should log in

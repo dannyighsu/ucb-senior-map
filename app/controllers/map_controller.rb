@@ -1,6 +1,13 @@
 class MapController < ApplicationController
 
-  def map
+  def new
+
+    if not current_user
+      redirect_to root_path
+    else
+      @users = User.all
+    end
+
   end
 
 end
