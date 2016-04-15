@@ -10,17 +10,17 @@ Scenario: The edit profile page exists
   Then  I should see "Edit Profile"
   When  I follow "Edit Profile"
   Then  I should be on the edit profile page
-  And   I should see "LinkedIn"
-  And   I should see "Company"
+  And   I should see "Organization"
 
 Scenario: Users can edit their profiles
 
   Given I am logged in
   And   I am on the edit profile page
-  And   I fill in "Company" with "Mash Music"
-  And   I press "Save"
-  Then  I should be on the edit profile page
-  And   I should see "Profile Updated Succesfully."
+  And   I fill in "user_school" with "Mash Music"
+  And   I fill in "user_current_password" with "heywhoareyou"
+  And   I press "Update"
+  Then  I should be on the map page
+  And   I should see "Your account has been updated successfully."
 
 Scenario: People who are not logged in should not see profile prompts
 
