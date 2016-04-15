@@ -9,17 +9,17 @@ Scenario: The edit profile page exists
   And   I am on the home page
   Then  I should see "Edit Profile"
   When  I follow "Edit Profile"
-  Then  I should be on the edit_profile page
+  Then  I should be on the edit profile page
   And   I should see "LinkedIn"
   And   I should see "Company"
 
 Scenario: Users can edit their profiles
 
   Given I am logged in
-  And   I am on the edit_profile page
+  And   I am on the edit profile page
   And   I fill in "Company" with "Mash Music"
   And   I press "Save"
-  Then  I should be on the edit_profile page
+  Then  I should be on the edit profile page
   And   I should see "Profile Updated Succesfully."
 
 Scenario: People who are not logged in should not see profile prompts

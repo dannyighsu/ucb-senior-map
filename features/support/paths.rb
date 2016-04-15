@@ -27,6 +27,8 @@ module NavigationHelpers
       '/about'
     when /^the help page$/
       '/help'
+    when /^the edit profile page$/
+      '/users/edit'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

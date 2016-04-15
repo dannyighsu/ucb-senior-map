@@ -25,3 +25,7 @@ Given(/^I am logged in$/) do
     And   I press "Create My Account"
   }
 end
+
+Given(/^I am not logged in$/) do
+  
+end
