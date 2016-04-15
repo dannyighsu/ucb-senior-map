@@ -3,6 +3,10 @@ class UsersController < Devise::RegistrationsController
   def new
     @user = User.new
   end
+  
+  def edit
+    @user = current_user
+  end
 
   def create
     super do
