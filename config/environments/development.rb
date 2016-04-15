@@ -42,4 +42,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  unless Rails.env.production?
+    ENV['LinkedIn_ID'] = Rails.application.secrets.linkedin['id']
+    ENV['LinkedIn_Secret'] = Rails.application.secrets.linkedin['secret']
+  end
 end
