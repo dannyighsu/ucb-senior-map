@@ -7,20 +7,20 @@ Feature: Have basic reference routes
 Scenario: there should exist an About page
 
   Given I am on the home page
-  And I follow "about us"
+  And I follow "About"
   Then I should be on the about page
   And I should see "Berkeley Senior Class Council"
 
 Scenario: there should exist a Contact page
 
   Given I am on the home page
-  And I follow "contact"
+  And I follow "Contact"
   Then I should be on the contact page
-  And I should see "Email"
+  And I should see "email"
 
 Scenario: there should exist a Help page
 
   Given I am on the home page
-  And I follow "help"
+  And I follow "Help"
   Then I should be on the help page
   And I should see "FAQ"
