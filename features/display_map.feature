@@ -7,7 +7,7 @@ Feature: display a map of users
 Scenario: A logged in user should be redirected to the map page when accessing home
 
   Given I am logged in
-  When  I follow "Home"
+  When  I follow "logoimage"
   Then  I should be on the map page
 
 Scenario: a logged in user should be able to view the map
