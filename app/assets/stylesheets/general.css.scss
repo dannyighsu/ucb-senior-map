@@ -12,13 +12,41 @@ html {
 }
 
 header {
-  background: rgba(100, 100, 100, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+  font-size : 16px;
   
   a:link, a:visited {
     color: white;
-    padding: 14px 25px;
+    padding: 10px 15px;
     text-align: center; 
-    text-decoration: none;
+    text-decoration: underline;
     display: inline-block;
   }
+}
+
+.button{
+ display : inline;
+}
+
+.btn {
+  font-size : 16px;
+  text-decoration: underline;
+}
+
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus {
+  background-image : none;
+  background-color : white;
+}
+
+.btn-group {
+  a:link, a:visited {
+   color: black;
+   font-size : 16px;
+   background-color : white;
+ }
+ a:hover {
+   
+ }
+ color: black;
+ font-size : 16px;
 }
