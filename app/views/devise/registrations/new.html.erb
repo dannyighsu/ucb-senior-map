@@ -33,6 +33,24 @@
     </div>
 
     <div class="field">
+      <%= f.label :school, 'School or Company' %><br />
+      <%= f.text_field :school, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :description, 'Quick Note About You'%>
+      (100 words or less)<br />
+      <%= f.text_area :description, autocomplete: "off" %>
+    </div>
+
+    <!--<div class="field">
+      <%=
+=begin
+  button_to "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ENV['LinkedIn_ID']}&redirect_uri=#{Request.original_url}&state=HEYJUDEDONTMAKEITBAD", via: 'get'
+=end
+  %>-->
+
+    <div class="field">
       <%= f.label :location %><br />
       <%= f.text_field :location, autocomplete: "off" %>
     </div>

@@ -92,6 +92,21 @@ Scenario: creating a user without LinkedIn should require a valid location
   Then  I should be on the new_user_registration page
   And   I should see "Please provide a valid location"
 
+Scenario: filling in a too long description should throw an error
+
+  Given I am on the new_user_registration page
+  And   I fill in "First name" with "Porter"
+  And   I fill in "Last name" with "Robinson"
+  And   I fill in "Email" with "test@berkeley.edu"
+  And   I fill in "Password" with "heywhoareyou"
+  And   I fill in "Password confirmation" with "heywhoareyou"
+  And   I fill in "Location" with "somewhere over the rainbow"
+  And   I fill in "School or Company" with "SoundCloud"
+  And   I fill in "Quick Note About You" with "I make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or something"
+  And   I press "Create My Account"
+  Then  I should be on the new_user_registration page
+  And   I should see "Your description is too long"
+
 Scenario: correct login should go to Map
 
   Given I am on the new_user_registration page
@@ -101,5 +116,7 @@ Scenario: correct login should go to Map
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "heywhoareyou"
   And   I fill in "Location" with "San Francisco, CA"
+  And   I fill in "School or Company" with "SoundCloud"
+  And   I fill in "Quick Note About You" with "I make music or something"
   And   I press "Create My Account"
   Then  I should log in
