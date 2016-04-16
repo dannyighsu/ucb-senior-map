@@ -7,7 +7,7 @@ Feature: create a user
 Scenario: A create user page should exist
 
   Given I am on the home page
-  When  I follow "Register as a Berkeley Student"
+  When  I follow "Register Now!"
   Then  I should be on the new_user_registration page
 
 Scenario: creating a user should require first name
@@ -79,18 +79,18 @@ Scenario: creating a user without LinkedIn should require matching passwords
   Then  I should be on the new_user_registration page
   And   I should see "The passwords you entered do not match."
 
-Scenario: creating a user without LinkedIn should require a valid location
+#Scenario: creating a user without LinkedIn should require a valid location
 
-  Given I am on the new_user_registration page
-  And   I fill in "First name" with "Porter"
-  And   I fill in "Last name" with "Robinson"
-  And   I fill in "Email" with "test@berkeley.edu"
-  And   I fill in "Password" with "heywhoareyou"
-  And   I fill in "Password confirmation" with "heywhoareyou"
-  And   I fill in "Location" with "somewhere over the rainbow"
-  And   I press "Create My Account"
-  Then  I should be on the new_user_registration page
-  And   I should see "Please provide a valid location"
+#  Given I am on the new_user_registration page
+#  And   I fill in "First name" with "Porter"
+#  And   I fill in "Last name" with "Robinson"
+#  And   I fill in "Email" with "test@berkeley.edu"
+#  And   I fill in "Password" with "heywhoareyou"
+#  And   I fill in "Password confirmation" with "heywhoareyou"
+#  And   I fill in "Location" with "somewhere over the rainbow"
+#  And   I press "Create My Account"
+#  Then  I should be on the new_user_registration page
+#  And   I should see "Please provide a valid location"
 
 Scenario: filling in a too long description should throw an error
 
