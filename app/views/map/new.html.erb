@@ -16,30 +16,31 @@
   	<div class="page-header">
       <h1> </h1>
       <h1> </h1>
-      <h3 ALIGN="LEFT" style="background-color:lightyellow; color:blue"> Senior Map for the Cal Class of 2016! </h3>
-      <h1 ALIGN="CENTER" style="color:blue; background-color:lightyellow;"> List of Alumni </h1>
+      <h1 ALIGN="CENTER" style="color:#fff;"> List of Alumni </h1>
     </div>
 
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>City</th>
-              <th>Title</th>
-              <th>Email</th>
-              <th>Description</th>
+              <th bgcolor="#5D7B9D"><font color="#fff">First Name</th>
+              <th bgcolor="#5D7B9D"><font color="#fff">Last Name</th>
+              <th bgcolor="#5D7B9D"><font color="#fff">City</th>
+              <th bgcolor="#5D7B9D"><font color="#fff">Grad School</th>
+              <th bgcolor="#5D7B9D"><font color="#fff">Email</th>
+              <th bgcolor="#5D7B9D"><font color="#fff">Description</th>
 
         </tr>
       </thead>
 
       <tbody>
         <%= content_tag_for(:tr, @users) do |user| %>
-              <td><%= user.first_name %></td>
-              <td><%= user.last_name %></td>
-              <td><%= user.location %></td>
-              <td><%= user.email %></td>
+              <td bgcolor="#B38B00"><font color="#004AA8"><%= user.first_name %></td>
+              <td bgcolor="#B38B00"><font color="#004AA8"><%= user.last_name %></td>
+              <td bgcolor="#B38B00"><font color="#004AA8"><%= user.location %></td>
+              <td bgcolor="#B38B00"><font color="#004AA8"><%= user.school %></td>
+              <td bgcolor="#B38B00"><font color="#004AA8"><%= user.email %></td>
+              <td bgcolor="#B38B00"><font color="#004AA8"><%= user.description %></td>
         <% end %>
       </tbody>
     </table>

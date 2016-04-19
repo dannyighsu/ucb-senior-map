@@ -16,5 +16,9 @@ check: localhost:3000
 
 
 If you ruby is out of date:
-1. \curl -L https://get.rvm.io | bash -s stable –ruby
-2. rvm install ruby-2.2.2
+1. \curl -L https://get.rvm.io | bash -s stable –ruby  
+2. rvm install ruby-2.2.2  
+
+If you are running locally:   
+lsof -i tcp:3000  
+kill -9 <pid>

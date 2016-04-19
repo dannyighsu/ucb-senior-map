@@ -1,9 +1,9 @@
 class UsersController < Devise::RegistrationsController
-  
+
   protect_from_forgery with: :exception
 
     before_filter :configure_permitted_parameters, if: :devise_controller?
-    
+
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :last_name, :school, :description, :location, :email, :password) }
       devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:first_name, :last_name, :school, :description, :location, :email, :password, :current_password) }
@@ -41,7 +41,7 @@ class UsersController < Devise::RegistrationsController
         flash[:notice] = "This email has already been registered"
         redirect_to new_user_registration_path
         return
-      elsif user[:description].length > 100
+      elsif user[:description].length > 20
         flash[:notice] = "Your description is too long."
         redirect_to new_user_registration_path
         return
