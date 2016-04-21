@@ -3,7 +3,7 @@ Then /^(?:|I )should log in$/ do
 end
 
 Then(/^I should see the map$/) do
-  text = "Senior Map for the Cal Class of 2016!"
+  text = "List of Alumni"
   if page.respond_to? :should
     page.should have_content(text)
   else
@@ -27,5 +27,5 @@ Given(/^I am logged in$/) do
 end
 
 Given(/^I am not logged in$/) do
-  
+
 end

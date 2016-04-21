@@ -41,7 +41,7 @@ class UsersController < Devise::RegistrationsController
         flash[:notice] = "This email has already been registered"
         redirect_to new_user_registration_path
         return
-      elsif user[:description].length > 20
+      elsif user[:description] != nil && user[:description].length > 100
         flash[:notice] = "Your description is too long."
         redirect_to new_user_registration_path
         return

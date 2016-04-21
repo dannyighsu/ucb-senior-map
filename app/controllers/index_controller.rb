@@ -1,7 +1,6 @@
 class IndexController < ApplicationController
 
   def home
-    logger.info(session[:user_id])
     if current_user
       redirect_to map_path
     end
