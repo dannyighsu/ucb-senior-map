@@ -27,3 +27,10 @@ Scenario: People who are not logged in should not see profile prompts
   Given I am not logged in
   And   I am on the home page
   Then  I should not see "Edit Profile"
+
+Scenario: The user's LinkedIn account appears on the edit profile page if it exists
+
+  Given I am logged in
+  And   I am on the edit profile page
+  And   I have a LinkedIn account
+  Then  I should see "LinkedIn"

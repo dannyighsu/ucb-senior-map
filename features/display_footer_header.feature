@@ -2,7 +2,7 @@ Feature: See header and footer
   As a User
   So that I can navigate throughout the page
   I should be able to see and visit links from the header and footer
-  
+
 Scenario: Headers and Footers appears on every page
 
   Given I am on the home page
@@ -43,17 +43,17 @@ Scenario: Footer links work and are correct
   Then  I should be on the help page
   When  I follow "About Us"
   Then  I should be on the about page
-  
+
 Scenario: People who are not logged should see a link to sign in and not to sign out
 
   Given I am not logged in
   And   I am on the home page
   Then  I should see "Sign In"
   Then  I should not see "Sign Out"
-  
+
 Scenario: People who are logged in should see a link to sign out and not sign in
 
   Given I am logged in
   And   I am on the map page
   Then  I should see "Sign Out"
-  Then  I should not see "Sign Ip"
+  Then  I should not see "Sign In"
