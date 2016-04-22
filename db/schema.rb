@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160415000426) do
     t.string   "last_name"
     t.string   "linked_in_id"
     t.string   "school"
+    t.string   "major"
     t.text     "description"
   end
 
