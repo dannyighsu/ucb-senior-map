@@ -61,7 +61,10 @@ group :development, :test do
   gem 'autotest-rails'
   gem 'database_cleaner'
   gem 'launchy'
-  
+  gem 'geocoder'
+  gem 'random-location'
+  gem 'gon'
+
 end
 
 group :test do

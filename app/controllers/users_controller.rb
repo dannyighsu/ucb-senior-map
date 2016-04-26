@@ -1,4 +1,5 @@
 class UsersController < Devise::RegistrationsController
+  include UsersHelper
 
   protect_from_forgery with: :exception
 
@@ -29,6 +30,11 @@ class UsersController < Devise::RegistrationsController
         flash[:notice] = "Please provide either your LinkedIn account or a valid location."
         redirect_to new_user_registration_path
         return
+      # this method is defined it ../helpers/users_helper.rb
+      elsif checkLocation(user[:location])
+        flash[:notice] = "Your city " + user[:location]+" cannot be validated, please provide the correct name of the city."
+        redirect_to new_user_registration_path
+        return
       elsif user[:password].length < 6
         flash[:notice] = "Passwords must be at least 6 characters in length."
         redirect_to new_user_registration_path
@@ -41,12 +47,12 @@ class UsersController < Devise::RegistrationsController
         flash[:notice] = "This email has already been registered"
         redirect_to new_user_registration_path
         return
-      elsif user[:description] != nil && user[:description].length > 100
-        flash[:notice] = "Your description is too long."
-        redirect_to new_user_registration_path
-        return
       elsif user[:major] != nil && user[:major].length > 10
         flash[:notice] = "Your major is too long."
+        redirect_to new_user_registration_path
+        return
+      elsif user[:description] != nil && user[:description].length > 100
+        flash[:notice] = "Your description is too long."
         redirect_to new_user_registration_path
         return
       end
@@ -57,6 +63,7 @@ class UsersController < Devise::RegistrationsController
       resource.major = user[:major]
       resource.school = user[:school]
       resource.description = user[:description]
+      resource.lat,resource.lon = randomizeCoordinate(user[:location],8048) # 5 miles in Meters
       result = resource.save
 =begin
       if result

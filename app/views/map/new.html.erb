@@ -12,7 +12,6 @@
 
 
   <body>
-
   	<div class="page-header">
       <h2 ALIGN="CENTER" style="color:#fff;" face="Garamond"> List of Alumni </h2>
     </div>
@@ -38,7 +37,7 @@
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.first_name %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.last_name %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.major %></td>
-              <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.location %></td>
+              <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.location %>: <%= user.lat %>,<%= user.lon %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.school %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.email %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.description %></td>
@@ -47,8 +46,6 @@
     </table>
   </div>
 
-<!--TODO: add content to marker so it correctly displays the content of the table   -->
-<!--  namely first name, last name, description-->
     <div id="map"></div>
     <script>
       function initMap() {
@@ -256,27 +253,27 @@
 
           var mapOptions = {
             zoom: 8,
-      center: new google.maps.LatLng(37.7749, -122.4194),
-      mapTypeControlOptions: {
-        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-      }
-    };
+            center: new google.maps.LatLng(37.7749, -122.4194),
+            mapTypeControlOptions: {
+              mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+            }
+          };
     var map = new google.maps.Map(document.getElementById('map'),
       mapOptions);
 
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-
+    // iterate through all users from DB, display the pins based on lat and lon, also name, discription and major
         // you can use html format to display the info
-
-        var contentString = " <h3> user first_name last_name </h3> description";
+        var contentString = " <h3> user first_name last_name </h3> major & description";
         var infowindow = new google.maps.InfoWindow({
             content: contentString
           });
+
         var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(37.869565, -122.258786),  // this is berkeley
-              map: map, title: "Sample",
+              position: new google.maps.LatLng(37.869565, -122.258786),
+              map: map, title: "actual_map_of_alumni",
               animation: google.maps.Animation.DROP,
             });
 
@@ -291,7 +288,8 @@
               //  marker.setAnimation(google.maps.Animation.BOUNCE);
              }
             });
-      }
+
+      }// end of function initMap()
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
         async defer></script>
