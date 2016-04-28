@@ -27,20 +27,22 @@
               <th bgcolor="#5D7B9D"><font color="#fff" face="Raleway">Grad School or Company</th>
               <th bgcolor="#5D7B9D"><font color="#fff" face="Raleway">Email</th>
               <th bgcolor="#5D7B9D"><font color="#fff" face="Raleway">Cool thing about me!</th>
-
-
         </tr>
       </thead>
 
       <tbody>
         <%= content_tag_for(:tr, @users) do |user| %>
-              <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.first_name %></td>
-              <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.last_name %></td>
+              <td id="first_name" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.first_name %></td>
+              <td id="last_name" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.last_name %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.major %></td>
-              <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.location %>: <%= user.lat %>,<%= user.lon %></td>
+              <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.location %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.school %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.email %></td>
-              <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.description %></td>
+              <td id="description" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.description %></td>
+                  <!-- <td id="lat" style="display:none;"> <%= user.lat %></td>
+                  <td id="lon" style="display:none;"> <%= user.lon %></td> -->
+                  <td id="lat"> <%= user.lat %></td>
+                  <td id="lon"> <%= user.lon %></td>
         <% end %>
       </tbody>
     </table>
@@ -252,8 +254,8 @@
           {name: "Styled_Map"});
 
           var mapOptions = {
-            zoom: 8,
-            center: new google.maps.LatLng(37.7749, -122.4194),
+            zoom: 5,
+            center: new google.maps.LatLng(39.8282, -98.5795), // centered to the the middle of US
             mapTypeControlOptions: {
               mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
             }
@@ -264,15 +266,16 @@
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-    // iterate through all users from DB, display the pins based on lat and lon, also name, discription and major
         // you can use html format to display the info
-        var contentString = " <h3> user first_name last_name </h3> major & description";
+        var contentString = document.getElementById("first_name").innerText + " " + document.getElementById("last_name").innerText + "  <h5>" + " "+ document.getElementById("description").innerText +"</h5> ";
         var infowindow = new google.maps.InfoWindow({
             content: contentString
           });
 
         var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(37.869565, -122.258786),
+              position: new google.maps.LatLng(document.getElementById("lat").innerText, document.getElementById("lon").innerText),
+
+              // position: new google.maps.LatLng(37.869565, -122.258786),
               map: map, title: "actual_map_of_alumni",
               animation: google.maps.Animation.DROP,
             });
@@ -288,7 +291,6 @@
               //  marker.setAnimation(google.maps.Animation.BOUNCE);
              }
             });
-
       }// end of function initMap()
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
