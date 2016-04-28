@@ -17,7 +17,7 @@
     </div>
 
   <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
+    <table id="table" class="table table-striped table-bordered table-hover">
       <thead>
         <tr>
               <th bgcolor="#5D7B9D"><font color="#fff" face="Raleway">First Name</th>
@@ -32,17 +32,15 @@
 
       <tbody>
         <%= content_tag_for(:tr, @users) do |user| %>
-              <td id="first_name" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.first_name %></td>
-              <td id="last_name" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.last_name %></td>
+              <td class="first_name" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.first_name %></td>
+              <td class="last_name" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.last_name %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.major %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.location %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.school %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.email %></td>
-              <td id="description" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.description %></td>
-                  <!-- <td id="lat" style="display:none;"> <%= user.lat %></td>
-                  <td id="lon" style="display:none;"> <%= user.lon %></td> -->
-                  <td id="lat"> <%= user.lat %></td>
-                  <td id="lon"> <%= user.lon %></td>
+              <td class="description" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.description %></td>
+              <td class="lat" style="display:none;"> <%= user.lat %></td>
+              <td class="lon" style="display:none;"> <%= user.lon %></td>
         <% end %>
       </tbody>
     </table>
@@ -266,31 +264,52 @@
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-        // you can use html format to display the info
-        var contentString = document.getElementById("first_name").innerText + " " + document.getElementById("last_name").innerText + "  <h5>" + " "+ document.getElementById("description").innerText +"</h5> ";
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString
+    // setting the zoom back to the center of the map if single clicked
+    map.addListener('click', function() {
+    map.setZoom(5);
+    map.setCenter(new google.maps.LatLng(39.8282, -98.5795));
+    });
+
+        // display the content from table to the map
+        var first_name = Array.from(document.getElementsByClassName("first_name"));
+        var last_name = Array.from(document.getElementsByClassName("last_name"));
+        var description = Array.from(document.getElementsByClassName("description"));
+        var lat = Array.from(document.getElementsByClassName("lat"));
+        var lon = Array.from(document.getElementsByClassName("lon"));
+
+        for (var i=0; i<last_name.length;i++){
+          var contentString = first_name[i].innerHTML + " " + last_name[i].innerHTML+ "  <h5>" + " "+ description[i].innerHTML+"</h5> ";
+          var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+
+          var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(lat[i].innerHTML, lon[i].innerHTML),
+                map: map, title: "actual_map_of_alumni",
+                animation: google.maps.Animation.DROP,
+              });
+
+          // clicking the pin would zoom into the map
+          google.maps.event.addListener(marker,'click',function() {
+              map.setZoom(9);
+              map.setCenter(marker.getPosition());
           });
+          infowindow.open(map, marker);
 
-        var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(document.getElementById("lat").innerText, document.getElementById("lon").innerText),
 
-              // position: new google.maps.LatLng(37.869565, -122.258786),
-              map: map, title: "actual_map_of_alumni",
-              animation: google.maps.Animation.DROP,
-            });
+// TODO: right now this shit is only applying to the last pin created 
+          // // clicking the pin would display the content
+          // marker.addListener('click', function() {
+          //   if (marker.getAnimation() !== null) {
+          //        marker.setAnimation(null);
+          //      } else {
+          //        infowindow.open(map, marker);
+          //        // uncomment to make pins bounce
+          //       //  marker.setAnimation(google.maps.Animation.BOUNCE);
+          //      }
+          //     });
 
-        // adding the marker onto map
-        marker.addListener('click', function() {
-          if (marker.getAnimation() !== null) {
-               marker.setAnimation(null);
-             } else {
-               infowindow.open(map, marker);
-
-               // uncomment to make pins bounce
-              //  marker.setAnimation(google.maps.Animation.BOUNCE);
-             }
-            });
+          }// end of for loop iteration
       }// end of function initMap()
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
