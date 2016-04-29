@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   match "/contact",   to: "index#contact",  via: "get"
   match "/help",      to: "index#help",     via: "get"
   match "/map",       to: "map#new",        via: "get"
+  match "/linkedin",  to: "linkedin#linkedin", via: "get"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -43,10 +43,6 @@ class UsersController < Devise::RegistrationsController
         flash[:notice] = "The passwords you entered do not match."
         redirect_to new_user_registration_path
         return
-      elsif User.find_by(email: "dannyighsu@berkeley.edu")
-        flash[:notice] = "This email has already been registered"
-        redirect_to new_user_registration_path
-        return
       elsif user[:major] != nil && user[:major].length > 10
         flash[:notice] = "Your major is too long."
         redirect_to new_user_registration_path
@@ -65,16 +61,13 @@ class UsersController < Devise::RegistrationsController
       resource.description = user[:description]
       resource.lat,resource.lon = randomizeCoordinate(user[:location],4800) # 3 miles in Meters
       result = resource.save
-=begin
       if result
-        UserMailer.registration_confirmation(@user).deliver
-        flash[:success] = "An email has been sent to the berkeley.edu address you provided. Please click the link to confirm your email."
-        redirect_to map_path
+        #UserMailer.registration_confirmation(@user).deliver
       else
         flash[:error] = "There was an error in your registration attempt. Please try again."
         redirect_to new_user_registration_path
+        return
       end
-=end
     end
   end
 

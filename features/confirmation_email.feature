@@ -15,8 +15,8 @@ Scenario: correct signup should send a confirmation email
   And   I fill in "School or Company" with "SoundCloud"
   And   I fill in "Quick Note About You" with "I make music or something"
   And   I press "Create My Account"
-  Then  I should be on the home page
-  And   I should see "A confirmation email has been sent to the email you provided. Please check the email to continue."
+  Then  I should be on the confirmation page
+  And   I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 
 Scenario: users should be able to verify through their link
 

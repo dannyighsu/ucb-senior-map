@@ -8,6 +8,7 @@ gem 'bootstrap-sass'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
 gem 'pg'
+gem 'httparty'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'

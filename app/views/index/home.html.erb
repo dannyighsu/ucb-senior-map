@@ -3,8 +3,14 @@
 <% end %>
 
 <div class='center jumbotron'>
-  <h1 style='text-align: center'>UCB Senior Map</h1>
+  <h1 style='text-align: center'>ClassMap</h1>
   <h2 style='text-align: center'>By the UC Berkeley Senior Class Council</h2>
+
+  <div id='flash'>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+    <% end %>
+  </div>
 
   <%= link_to 'Register Now!', new_user_registration_path, id: 'register' %>
 
