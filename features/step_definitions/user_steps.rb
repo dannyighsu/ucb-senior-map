@@ -15,6 +15,20 @@ Then(/^I should see the linkedin button$/) do
   page.should have_xpath("//a[@id='linkedin-button']")
 end
 
+#Given /^I am a new, authenticated user$/ do
+#  email = 'testsenior@berkeley.edu'
+#  password = 'secretpass'
+#  user = User.new(:email => email, :password => password, :password_confirmation => password)
+#  token = user.confirmation_token
+#  url = '/users/confirmation?confirmation_token='+token
+#  puts url
+#  visit url
+#  fill_in "user_email", :with => email
+#  fill_in "user_password", :with => password
+#  click_button "Log in"
+#  puts page.body
+#end
+
 #Given(/^I am logged in$/) do
 #  steps %Q{
 #    Given I am on the new_user_registration page
