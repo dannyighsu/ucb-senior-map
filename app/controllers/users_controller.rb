@@ -20,35 +20,43 @@ class UsersController < Devise::RegistrationsController
       logger.info(user[:email])
       if user[:first_name] == "" or user[:last_name] == ""
         flash[:notice] = "Please enter your name."
+        resource.delete
         redirect_to new_user_registration_path
         return
       elsif /.+@berkeley.edu/.match(user[:email]) == nil
         flash[:notice] = "Please enter a berkeley.edu email address."
+        resource.delete
         redirect_to new_user_registration_path
         return
       elsif user[:location] == ""
         flash[:notice] = "Please provide either your LinkedIn account or a valid location."
+        resource.delete
         redirect_to new_user_registration_path
         return
       # this method is defined it ../helpers/users_helper.rb
       elsif checkLocation(user[:location])
         flash[:notice] = "Your city " + user[:location]+" cannot be validated, please provide the correct name of the city."
+        resource.delete
         redirect_to new_user_registration_path
         return
       elsif user[:password].length < 6
         flash[:notice] = "Passwords must be at least 6 characters in length."
+        resource.delete
         redirect_to new_user_registration_path
         return
       elsif user[:password] != params[:user][:password_confirmation]
         flash[:notice] = "The passwords you entered do not match."
+        resource.delete
         redirect_to new_user_registration_path
         return
       elsif user[:major] != nil && user[:major].length > 10
         flash[:notice] = "Your major is too long."
+        resource.delete
         redirect_to new_user_registration_path
         return
       elsif user[:description] != nil && user[:description].length > 100
         flash[:notice] = "Your description is too long."
+        resource.delete
         redirect_to new_user_registration_path
         return
       end
@@ -65,6 +73,7 @@ class UsersController < Devise::RegistrationsController
         #UserMailer.registration_confirmation(@user).deliver
       else
         flash[:error] = "There was an error in your registration attempt. Please try again."
+        resource.delete
         redirect_to new_user_registration_path
         return
       end

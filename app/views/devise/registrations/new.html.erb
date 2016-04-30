@@ -9,22 +9,27 @@
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
+    </br>
+    <div class="field">
+      <%= link_to image_tag(asset_path("signin-button.png")), "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ENV['LinkedIn_ID']}&redirect_uri=#{request.base_url+linkedin_path}&state=#{SecureRandom.base64}", via: 'get', id: 'linkedin-button' %>
+    </div>
+    </br>
 
     <div class="field">
       <%= f.label :first_name %>
-      (required)  <br />
-      <%= f.text_field :first_name, autofocus: true %>
+      *  <br />
+      <%= f.text_field :first_name, autofocus: true, value: params[:first_name] %>
     </div>
 
     <div class="field">
       <%= f.label :last_name %>
-      (required) <br />
-      <%= f.text_field :last_name %>
+      * <br />
+      <%= f.text_field :last_name, value: params[:last_name] %>
     </div>
 
     <div class="field">
       <%= f.label :email , 'Berkeley Email'%>
-      (required) <br />
+      * <br />
       <%= f.email_field :email %>
     </div>
 
@@ -34,7 +39,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :password %> (required)
+      <%= f.label :password %> *
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
@@ -43,39 +48,34 @@
 
     <div class="field">
       <%= f.label :password_confirmation %>
-      (required) <br />
+      * <br />
       <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
 
     <div class="field">
       <%= f.label :school, 'School or Company' %><br />
-      <%= f.text_field :school, autocomplete: "off" %>
+      <%= f.text_field :school, autocomplete: "off", value: params[:position] %>
     </div>
 
     <div class="field">
       <%= f.label :location, 'Which city will you be after graduation?' %>
-      (required) <br />
-      <%= f.text_field :location, autocomplete: "off" %>
+      * <br />
+      <%= f.text_field :location, autocomplete: "off", value: params[:location] %>
     </div>
 
     <div class="field">
-      <%= f.label :description, 'Quick things About You!'%>
+      <%= f.label :description, 'Quick things About You!' %>
       (Extracurriculars, Sports .etc, 100 words or less)<br />
-      <%= f.text_area :description, autocomplete: "off" %>
+      <%= f.text_area :description, autocomplete: "off", value: params[:summary] %>
     </div>
 
-    <div class="field">
-      <%
-=begin
-link_to 'Connect My LinkedIn Account', "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ENV['LinkedIn_ID']}&redirect_uri=#{request.base_url+linkedin_path}&state=#{SecureRandom.base64}", via: 'get'
-=end%>
-    </div>
-
+    * denotes required information
     </br>
     <div class="actions">
       <%= f.submit "Create My Account" %>
     </div>
   <% end %>
+  </br>
 
   <%= render "devise/shared/links" %>
 </div>
