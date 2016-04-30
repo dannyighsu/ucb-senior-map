@@ -13,4 +13,17 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "#update" do
+    it "takes one parameter and returns nil" do
+      @users[0].update(first_name: "Danny")
+      expect(@users[0].first_name).to eql "Danny"
+    end
+  end
+
+  describe "#destroy" do
+    it "should delete the user" do
+      @users[0].destroy
+    end
+  end
+
 end
