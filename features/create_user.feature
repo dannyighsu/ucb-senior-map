@@ -61,7 +61,7 @@ Scenario: creating a user without LinkedIn should require a password of at least
   And   I fill in "Last name" with "Robinson"
   And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "hiyou"
-  And   I fill in "Location" with "Berkeley, CA"
+  And   I fill in "user_location" with "Berkeley, CA"
   And   I press "Create My Account"
   Then  I should be on the new_user_registration page
   And   I should see "Passwords must be at least 6 characters in length."
@@ -74,7 +74,7 @@ Scenario: creating a user without LinkedIn should require matching passwords
   And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "idontknow"
-  And   I fill in "Location" with "Berkeley, CA"
+  And   I fill in "user_location" with "Berkeley, CA"
   And   I press "Create My Account"
   Then  I should be on the new_user_registration page
   And   I should see "The passwords you entered do not match."
@@ -87,9 +87,9 @@ Scenario: filling in a too long description should throw an error
   And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "heywhoareyou"
-  And   I fill in "Location" with "somewhere over the rainbow"
+  And   I fill in "user_location" with "Berkeley, CA"
   And   I fill in "School or Company" with "SoundCloud"
-  And   I fill in "Quick Note About You" with "I make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or something"
+  And   I fill in "user_description" with "I make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or something"
   And   I press "Create My Account"
   Then  I should be on the new_user_registration page
   And   I should see "Your description is too long"

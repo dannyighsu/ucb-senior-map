@@ -11,12 +11,11 @@ Scenario: correct signup should send a confirmation email
   And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "heywhoareyou"
-  And   I fill in "Location" with "San Francisco, CA"
+  And   I fill in "user_location" with "San Francisco, CA"
   And   I fill in "School or Company" with "SoundCloud"
-  And   I fill in "Quick Note About You" with "I make music or something"
+  And   I fill in "user_description" with "I make music or something"
   And   I press "Create My Account"
-  Then  I should be on the confirmation page
-  And   I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
+  Then   I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
 
 Scenario: users should be able to verify through their link
 

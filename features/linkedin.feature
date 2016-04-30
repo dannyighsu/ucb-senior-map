@@ -6,4 +6,4 @@ Feature: allow users to connect their LinkedIn profiles
 Scenario: a log in with LinkedIn button should exist
 
   Given I am on the new_user_registration page
-  Then  I should see "Connect My LinkedIn Account"
+  Then  I should see the linkedin button
