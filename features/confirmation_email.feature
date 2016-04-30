@@ -11,7 +11,7 @@ Scenario: correct signup should send a confirmation email
   And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "heywhoareyou"
-  And   I fill in "user_location" with "San Francisco, CA"
+  And   I fill in "location-field" with "San Francisco, CA"
   And   I fill in "School or Company" with "SoundCloud"
   And   I fill in "user_description" with "I make music or something"
   And   I press "Create My Account"
