@@ -1,3 +1,18 @@
+<script type="text/javascript">
+	function submit() {
+		var input = document.getElementById("location-field").value;
+		var queryString = updateQueryString("input", input, window.location.href + "match");
+		window.location.href = queryString;
+	}
+
+	function initialize() {
+		var input = document.getElementById('location-field');
+		var autocomplete = new google.maps.places.Autocomplete(input);
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
 <div class='center jumbotron'>
   <h2>Sign up</h2>
 
@@ -60,7 +75,7 @@
     <div class="field">
       <%= f.label :location, 'Which city will you be after graduation?' %>
       * <br />
-      <%= f.text_field :location, autocomplete: "off", value: params[:location] %>
+      <%= f.text_field :location, autocomplete: "off", value: params[:location], id: "location-field" %>
     </div>
 
     <div class="field">
