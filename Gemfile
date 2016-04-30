@@ -9,6 +9,15 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'devise'
 gem 'pg'
 gem 'httparty'
+gem 'rspec-rails'
+gem 'autotest'
+gem 'capybara'
+gem 'autotest-rails'
+gem 'database_cleaner'
+gem 'launchy'
+gem 'geocoder'
+gem 'random-location'
+gem 'gon'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
@@ -55,16 +64,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'rspec-rails'
-  gem 'autotest'
-  gem 'capybara'
-  gem 'autotest-rails'
-  gem 'database_cleaner'
-  gem 'launchy'
-  gem 'geocoder'
-  gem 'random-location'
-  gem 'gon'
 
 end
 
