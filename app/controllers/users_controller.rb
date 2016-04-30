@@ -17,7 +17,6 @@ class UsersController < Devise::RegistrationsController
   def create
     super do
       user = params[:user]
-      logger.info(user[:email])
       if user[:first_name] == "" or user[:last_name] == ""
         flash[:notice] = "Please enter your name."
         resource.delete
