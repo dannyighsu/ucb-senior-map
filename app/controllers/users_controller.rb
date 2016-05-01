@@ -12,6 +12,13 @@ class UsersController < Devise::RegistrationsController
 
   def new
     @user = User.new
+    if (not params[:email] and not session[:email]) or (params[:email] and not /.+@berkeley.edu/.match(params[:email]))
+      flash[:error] = "Please enter a Berkeley email address to proceed."
+      redirect_to root_path
+      return
+    elsif params[:email]
+      session[:email] = params[:email]
+    end
   end
 
   def create

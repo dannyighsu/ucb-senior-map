@@ -88,7 +88,7 @@ Scenario: filling in a too long description should throw an error
   And   I fill in "Password" with "heywhoareyou"
   And   I fill in "Password confirmation" with "heywhoareyou"
   And   I fill in "user_location" with "Berkeley, CA"
-  And   I fill in "School or Company" with "SoundCloud"
+  And   I fill in "School or Company After Graduation" with "SoundCloud"
   And   I fill in "user_description" with "I make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or somethingI make music or something"
   And   I press "Create My Account"
   Then  I should be on the new_user_registration page
@@ -103,7 +103,7 @@ Scenario: filling in a too long description should throw an error
 #  And   I fill in "Password" with "heywhoareyou"
 #  And   I fill in "Password confirmation" with "heywhoareyou"
 #  And   I fill in "Location" with "San Francisco, CA"
-#  And   I fill in "School or Company" with "SoundCloud"
+#  And   I fill in "School or Company After Graduation" with "SoundCloud"
 #  And   I fill in "Quick Note About You" with "I make music or something"
 #  And   I press "Create My Account"
 #  Then  I should log in

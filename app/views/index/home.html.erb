@@ -11,7 +11,14 @@
       <%= content_tag :div, msg, class: name %>
     <% end %>
   </div>
+  </br></br>
+  <%= form_tag(new_user_registration_path, method: 'get') do %>
+    <%= text_field_tag 'email', nil, placeholder: 'Enter a Berkeley email.' %>
+    </br></br>
+    <%= submit_tag 'Register Now!', id: 'register' %>
+  <% end %>
+  </br>
+  <%= link_to "What's this?", help_path, id:'whats-this' %>
 
-  <%= link_to 'Register Now!', new_user_registration_path, id: 'register' %>
 
 </div>

@@ -45,7 +45,7 @@
     <div class="field">
       <%= f.label :email , 'Berkeley Email'%>
       * <br />
-      <%= f.email_field :email %>
+      <%= f.email_field :email, value: session[:email] %>
     </div>
 
     <div class="field">
@@ -68,7 +68,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :school, 'School or Company' %><br />
+      <%= f.label :school, 'School or Company After Graduation' %><br />
       <%= f.text_field :school, autocomplete: "off", value: params[:position] %>
     </div>
 
@@ -85,7 +85,9 @@
     </div>
 
     * denotes required information
-    </br>
+    </br></br>
+		By registering for this service, I am allowing my email to be shared with other Berkeley classmates.
+  	</br>
     <div class="actions">
       <%= f.submit "Create My Account" %>
     </div>
