@@ -6,5 +6,5 @@ Feature: standardize locations with Google Locations
   Scenario: creating a user without LinkedIn should require a valid location
 
     Given I am on the new_user_registration page
-    And   I fill in "user_location" with "Berkeley"
+    And   I fill in "location-field" with "Berkeley"
     Then  I should see "Berkeley"

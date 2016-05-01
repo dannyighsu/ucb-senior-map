@@ -24,7 +24,7 @@ Scenario: The login page should create a user session
   And   I fill in "Email" with "test@berkeley.edu"
   And   I fill in "Password" with "password"
   And   I fill in "Password confirmation" with "password"
-  And   I fill in "user_location" with "San Francisco, CA"
+  And   I fill in "location-field" with "San Francisco, CA"
   And   I press "Create My Account"
   Then   I should see "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
   And   I follow "Sign In"
