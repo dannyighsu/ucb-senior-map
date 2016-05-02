@@ -50,5 +50,7 @@ Rails.application.configure do
   unless Rails.env.production?
     ENV['LinkedIn_ID'] = Rails.application.secrets.linkedin['id']
     ENV['LinkedIn_Secret'] = Rails.application.secrets.linkedin['secret']
+    ENV['Email_Username'] = "ucbclassmap@gmail.com"
+    ENV['Email_Password'] = "seniorclasscouncil"
   end
 end
