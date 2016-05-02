@@ -64,6 +64,7 @@ group :development, :test do
   gem 'geocoder'
   gem 'random-location'
   gem 'gon'
+  gem 'compass', '~> 1.0', '>= 1.0.3'
 
 end
 
