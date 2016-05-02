@@ -55,7 +55,7 @@ class UsersController < Devise::RegistrationsController
         resource.delete
         redirect_to new_user_registration_path
         return
-      elsif user[:major] != nil && user[:major].length > 10
+      elsif user[:major] != nil && user[:major].length > 100
         flash[:notice] = "Your major is too long."
         resource.delete
         redirect_to new_user_registration_path
