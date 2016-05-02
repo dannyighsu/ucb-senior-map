@@ -7,6 +7,19 @@
         width: 100%;
         height: 700px;
       }
+      #iw-container {
+        margin-bottom: 5px;
+      }
+      #iw-container .iw-content {
+        font-size: 13px;
+        line-height: 10px;
+        font-weight: 400;
+        margin-right: 1px;
+        padding: 10px 5px 10px 5px;
+        max-height: 140px;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
     </style>
   </head>
 
@@ -34,7 +47,7 @@
         <%= content_tag_for(:tr, @users) do |user| %>
               <td class="first_name" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.first_name %></td>
               <td class="last_name" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.last_name %></td>
-              <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.major %></td>
+              <td class="major" bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.major %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.location %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.school %></td>
               <td bgcolor="#B38B00"><font color="#004AA8" face="Source Sans"><%= user.email %></td>
@@ -264,7 +277,7 @@
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-    // setting the zoom back to the center of the map if single clicked
+    // setting the zoom back to the center of the map if single clicked.
     map.addListener('click', function() {
     map.setZoom(5);
     map.setCenter(new google.maps.LatLng(39.8282, -98.5795));
@@ -274,42 +287,34 @@
         var first_name = Array.from(document.getElementsByClassName("first_name"));
         var last_name = Array.from(document.getElementsByClassName("last_name"));
         var description = Array.from(document.getElementsByClassName("description"));
+        var major = Array.from(document.getElementsByClassName("major"));
         var lat = Array.from(document.getElementsByClassName("lat"));
         var lon = Array.from(document.getElementsByClassName("lon"));
 
         for (var i=0; i<last_name.length;i++){
-          var contentString = first_name[i].innerHTML + " " + last_name[i].innerHTML+ "  <h5>" + " "+ description[i].innerHTML+"</h5> ";
+           var contentString = '<div id="iw-container">' + '<div class="iw-title">' + first_name[i].innerHTML+ " "+ last_name[i].innerHTML + '</div>' + '<div class="iw-content">' + major[i].innerHTML + '<br />' + description[i].innerHTML + '<br />' + '</div></div>';
           var infowindow = new google.maps.InfoWindow({
               content: contentString
             });
 
           var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(lat[i].innerHTML, lon[i].innerHTML),
-                map: map, title: "actual_map_of_alumni",
+                map: map, title: "pin_"+first_name[i].innerHTML+"_"+last_name[i].innerHTML,
                 animation: google.maps.Animation.DROP,
               });
+            marker.infoWindow = infowindow;
 
-          // clicking the pin would zoom into the map
+            // using this would set the content for the current marker
           google.maps.event.addListener(marker,'click',function() {
-              map.setZoom(9);
-              map.setCenter(marker.getPosition());
+              map.setZoom(12);
+              map.setCenter(this.getPosition());
+              this.setAnimation(google.maps.Animation.BOUNCE);
+              this.infoWindow.open(map, this);
           });
+          //initially would display the content from the table
           infowindow.open(map, marker);
-
-
-// TODO: right now this shit is only applying to the last pin created 
-          // // clicking the pin would display the content
-          // marker.addListener('click', function() {
-          //   if (marker.getAnimation() !== null) {
-          //        marker.setAnimation(null);
-          //      } else {
-          //        infowindow.open(map, marker);
-          //        // uncomment to make pins bounce
-          //       //  marker.setAnimation(google.maps.Animation.BOUNCE);
-          //      }
-          //     });
-
           }// end of for loop iteration
+
       }// end of function initMap()
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
