@@ -16,8 +16,6 @@
 <div id='jumbotron-form'>
   <div class='center jumbotron'>
     <h2>Sign up</h2>
-    <br />
-    <br />
 
     <div id='flash'>
       <% flash.each do |name, msg| %>
@@ -34,20 +32,26 @@
       </br>
   
       <div class="field">
-        <%= f.label :first_name %>
-        *  <br />
+        <br />
+        <%= f.label :first_name do %>
+          First Name<span class="required">*</span>
+        <% end %>
         <%= f.text_field :first_name, autofocus: true, value: params[:first_name] %>
       </div>
   
       <div class="field">
-        <%= f.label :last_name %>
-        * <br />
+        <%= f.label :last_name do %>
+          Last Name<span class="required">*</span>
+        <% end %>
+        <br />
         <%= f.text_field :last_name, value: params[:last_name] %>
       </div>
   
       <div class="field">
-        <%= f.label :email , 'Berkeley Email' %>
-        * <br />
+        <%= f.label :email do %>
+          Berkeley Email<span class="required">*</span>
+        <% end %>
+        <br />
         <%= f.email_field :email, value: session[:email] %>
       </div>
   
@@ -62,7 +66,9 @@
       </div>
   
       <div class="field">
-        <%= f.label :password %> *
+        <%= f.label :password do %>
+          Password<span class="required">*</span>
+        <% end %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
@@ -70,8 +76,10 @@
       </div>
   
       <div class="field">
-        <%= f.label :password_confirmation %>
-        * <br />
+        <%= f.label :password_confirmation do %>
+          Password confirmation<span class="required">*</span>
+        <% end %>
+        <br />
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
   
@@ -81,8 +89,10 @@
       </div>
   
       <div class="field">
-        <%= f.label :location, 'Which city will you be after graduation?' %>
-        * <br />
+        <%= f.label :location do %>
+        Which city will you be after graduation?<span class="required">*</span>
+        <% end %>
+        <br />
         <%= f.text_field :location, autocomplete: "off", value: params[:location], id: "location-field" %>
       </div>
   
