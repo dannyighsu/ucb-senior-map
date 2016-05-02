@@ -13,91 +13,95 @@
 	google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<div class='center jumbotron'>
-  <h2>Sign up</h2>
+<div id='jumbotron-form'>
+  <div class='center jumbotron'>
+    <h2>Sign up</h2>
+    <br />
+    <br />
 
-  <div id='flash'>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
+    <div id='flash'>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
+    </div>
+  
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      </br>
+      <div class="field">
+        <%= link_to image_tag(asset_path("signin-button.png")), "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ENV['LinkedIn_ID']}&redirect_uri=#{request.base_url+linkedin_path}&state=#{SecureRandom.base64}", via: 'get', id: 'linkedin-button' %>
+      </div>
+      </br>
+  
+      <div class="field">
+        <%= f.label :first_name %>
+        *  <br />
+        <%= f.text_field :first_name, autofocus: true, value: params[:first_name] %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :last_name %>
+        * <br />
+        <%= f.text_field :last_name, value: params[:last_name] %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :email , 'Berkeley Email' %>
+        * <br />
+        <%= f.email_field :email, value: session[:email] %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :personal_email, 'Personal Email' %></br>
+        <%= f.email_field :personal_email %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :major, 'Major at Cal' %><br />
+        <%= f.text_field :major, autocomplete: "off" %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :password %> *
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        * <br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :school, 'School or Company After Graduationg' %><br />
+        <%= f.text_field :school, autocomplete: "off", value: params[:position] %>
+      </div>
+  
+      <div class="field">
+        <%= f.label :location, 'Which city will you be after graduation?' %>
+        * <br />
+        <%= f.text_field :location, autocomplete: "off", value: params[:location], id: "location-field" %>
+      </div>
+  
+      <div class="field">
+        <br />
+        <%= f.label :description, 'Quick things About You!' %>
+        (Extracurriculars, Sports .etc, 100 words or less)<br />
+        <%= f.text_area :description, autocomplete: "off", value: params[:summary] %>
+      </div>
+  
+      * denotes required information
+      </br></br>
+  		By registering for this service, I am allowing my email to be shared with other Berkeley classmates.
+  		
+      <div class="actions button button-block">
+        <%= f.submit "Create My Account", id: "button" %>
+      </div>
     <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-    </br>
-    <div class="field">
-      <%= link_to image_tag(asset_path("signin-button.png")), "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=#{ENV['LinkedIn_ID']}&redirect_uri=#{request.base_url+linkedin_path}&state=#{SecureRandom.base64}", via: 'get', id: 'linkedin-button' %>
-    </div>
-    </br>
-
-    <div class="field">
-      <%= f.label :first_name %>
-      *  <br />
-      <%= f.text_field :first_name, autofocus: true, value: params[:first_name] %>
-    </div>
-
-    <div class="field">
-      <%= f.label :last_name %>
-      * <br />
-      <%= f.text_field :last_name, value: params[:last_name] %>
-    </div>
-
-    <div class="field">
-      <%= f.label :email , 'Berkeley Email' %>
-      * <br />
-      <%= f.email_field :email, value: session[:email] %>
-    </div>
-
-    <div class="field">
-      <%= f.label :personal_email, 'Personal Email' %></br>
-      <%= f.email_field :personal_email %>
-    </div>
-
-    <div class="field">
-      <%= f.label :major, 'Major at Cal' %><br />
-      <%= f.text_field :major, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password %> *
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %>
-      * <br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :school, 'School or Company After Graduationg' %><br />
-      <%= f.text_field :school, autocomplete: "off", value: params[:position] %>
-    </div>
-
-    <div class="field">
-      <%= f.label :location, 'Which city will you be after graduation?' %>
-      * <br />
-      <%= f.text_field :location, autocomplete: "off", value: params[:location], id: "location-field" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :description, 'Quick things About You!' %>
-      (Extracurriculars, Sports .etc, 100 words or less)<br />
-      <%= f.text_area :description, autocomplete: "off", value: params[:summary] %>
-    </div>
-
-    * denotes required information
-    </br></br>
-		By registering for this service, I am allowing my email to be shared with other Berkeley classmates.
-  	</br>
-    <div class="actions">
-      <%= f.submit "Create My Account" %>
-    </div>
-  <% end %>
-  </br>
-
-  <%= render "devise/shared/links" %>
 </div>
