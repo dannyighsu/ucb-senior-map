@@ -1,8 +1,8 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   unless Rails.env.production?
-    ENV['LinkedIn_ID'] = Rails.application.secrets.linkedin['id']
-    ENV['LinkedIn_Secret'] = Rails.application.secrets.linkedin['secret']
+    ENV['LinkedIn_ID'] = '75mp0ohm1sdpeu'
+    ENV['LinkedIn_Secret'] = 'S1SYIGm6Q0VzLd8A'
     ENV['Email_Username'] = "ucbclassmap@gmail.com"
     ENV['Email_Password'] = "berkeleyseniorcouncil"
   end

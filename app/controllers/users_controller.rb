@@ -72,6 +72,7 @@ class UsersController < Devise::RegistrationsController
       resource.location = user[:location]
       resource.major = user[:major]
       resource.school = user[:school]
+      resource.personal_email = user[:personal_email]
       resource.description = user[:description]
       resource.lat,resource.lon = randomizeCoordinate(user[:location],4800) # 3 miles in Meters
       result = resource.save
