@@ -2,23 +2,27 @@
   UC Berkeley Senior Map
 <% end %>
 
-<div class='center jumbotron'>
-  <h1 style='text-align: center'>ClassMap</h1>
-  <h2 style='text-align: center'>By the UC Berkeley Senior Class Council</h2>
-
-  <div id='flash'>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
-    <% end %>
-  </div>
-  </br></br>
-  <%= form_tag(new_user_registration_path, method: 'get') do %>
-    <%= text_field_tag 'email', nil, placeholder: 'Enter a Berkeley email.' %>
+<div id='home'>
+  <div class='center jumbotron'>
+    <h1 style='text-align: center'>ClassMap</h1>
+    <h2 style='text-align: center'>By the UC Berkeley Senior Class Council</h2>
+  
+    <div id='flash'>
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+      <% end %>
+    </div>
     </br></br>
-    <%= submit_tag 'Register Now!', id: 'register' %>
-  <% end %>
-  </br>
-  <%= link_to "What's this?", help_path, id:'whats-this' %>
+    <%= form_tag(new_user_registration_path, method: 'get') do %>
+      <%= text_field_tag 'email', nil, placeholder: 'Enter a Berkeley email.' %>
+      </br></br>
+      <div class='action button button-clock'>
+        <%= submit_tag 'Register Now!', id: 'button'%>
+      </div>
+    <% end %>
+    </br>
+    <%= link_to "What's this?", help_path, id:'whats-this' %>
+  </div>
 
 
 </div>
