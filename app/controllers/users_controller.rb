@@ -60,7 +60,7 @@ class UsersController < Devise::RegistrationsController
         resource.delete
         redirect_to new_user_registration_path
         return
-      elsif user[:description] != nil && user[:description].length > 100
+      elsif user[:description] != nil && user[:description].length > 500
         flash[:notice] = "Your description is too long."
         resource.delete
         redirect_to new_user_registration_path
