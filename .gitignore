@@ -46,5 +46,5 @@ Thumbs.db
 
 /tmp
 /coverage
-onfig/environments/development.rb
+config/environments/development.rb
 
