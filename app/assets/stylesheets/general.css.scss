@@ -8,21 +8,69 @@ html {
     -o-background-size: cover;
     background-size: cover;
     height: 100%;
+    padding-top: 70px
   }
 }
 
-header {
-  background: rgba(0, 0, 0, 0.5);
-  font-size : 16px;
+.navbar-custom {
+	background-color: rgba(32, 32, 32, .8);
+  color:#ffffff;
+  border-radius:0;
+  min-height:auto;
 
-  a:link, a:visited {
+}
+  
+.navbar-custom .navbar-nav > li > a {
+	color:#fff;
+	padding-left:25px;
+	padding-right:25px;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+  color: #192f42;
+	background-color: rgba(26, 29, 45, .8);
+}
+      
+.navbar-custom .navbar-nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: rgba(26, 29, 45, .8);
+}
+
+.navbar-custom .navbar-toggle,
+.navbar-custom .nav .open>a, .navbar-custom .nav .open>a:hover, .navbar-custom .nav .open>a:focus {
+ background-color: rgba(26, 29, 45, .8);
+}
+
+.navbar-custom .icon-bar {
+ border: 1px solid #fff;                
+}
+
+/*-- change navbar dropdown color --*/
+.navbar-custom .navbar-nav .open .dropdown-menu>li>a,.navbar-custom .navbar-nav .open .dropdown-menu {
+  color:#ffffff;
+  background-color: rgba(26, 29, 45, .8);
+}
+
+.navbar-fixed-top .nav {
+    padding: 9px 0;
+}
+
+.navbar-fixed-top { position: absolute!important; }
+
+.navbar-fixed-top .navbar-logo {
+    padding: 5px 5px;
+}
+
+.navbar .nav > li > a {
+    float: none;
+    line-height: 19px;
+    text-decoration: none;
     color: white;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: underline;
-    display: inline-block;
-  }
+    font-size: 15px;
+    font-family: Tahoma, Geneva, sans-serif;
 }
+
 
 .center.jumbotron {
   background: rgba(255, 255, 255, 0.75);
@@ -30,27 +78,9 @@ header {
 
 footer {
   background: rgba(255, 255, 255, 0.75);
-}
-.button{
- display : inline;
-}
-
-.btn {
-  font-size : 16px;
-  text-decoration: underline;
-}
-
-.dropdown-menu li > a:hover, .dropdown-menu li > a:focus {
-  background-image : none;
-  background-color : white;
-}
-
-.btn-group {
-  a:link, a:visited {
-   color: black;
-   font-size : 16px;
-   background-color : white;
- }
- color: black;
- font-size : 16px;
+  color:#000000;
+  
+  a {
+    color:#000000;
+  }
 }
