@@ -60,6 +60,8 @@
   </div>
 
     <div id="map"></div>
+    <!--  adding markerclusterer -->
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer.js"></script>
     <script>
       function initMap() {
         var styles = [
@@ -291,6 +293,7 @@
         var lat = Array.from(document.getElementsByClassName("lat"));
         var lon = Array.from(document.getElementsByClassName("lon"));
 
+        var markers=[];
         for (var i=0; i<last_name.length;i++){
            var contentString = '<div id="iw-container">' + '<div class="iw-title">' + first_name[i].innerHTML+ " "+ last_name[i].innerHTML + '</div>' + '<div class="iw-content">' + major[i].innerHTML + '<br />' + description[i].innerHTML + '<br />' + '</div></div>';
           var infowindow = new google.maps.InfoWindow({
@@ -308,14 +311,15 @@
           google.maps.event.addListener(marker,'click',function() {
               map.setZoom(12);
               map.setCenter(this.getPosition());
-              // uncomment to make pins bounce 
+              // uncomment to make pins bounce
               // this.setAnimation(google.maps.Animation.BOUNCE);
               this.infoWindow.open(map, this);
-          });
+            });
+            markers.push(marker);
           // uncomment to display info from markers when map loads
           // infowindow.open(map, marker);
           }// end of for loop iteration
-
+           var markerCluster = new MarkerClusterer(map, markers);
       }// end of function initMap()
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
