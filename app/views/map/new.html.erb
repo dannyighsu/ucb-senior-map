@@ -308,11 +308,12 @@
           google.maps.event.addListener(marker,'click',function() {
               map.setZoom(12);
               map.setCenter(this.getPosition());
-              this.setAnimation(google.maps.Animation.BOUNCE);
+              // uncomment to make pins bounce 
+              // this.setAnimation(google.maps.Animation.BOUNCE);
               this.infoWindow.open(map, this);
           });
-          //initially would display the content from the table
-          infowindow.open(map, marker);
+          // uncomment to display info from markers when map loads
+          // infowindow.open(map, marker);
           }// end of for loop iteration
 
       }// end of function initMap()
